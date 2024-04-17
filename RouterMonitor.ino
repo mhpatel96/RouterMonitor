@@ -2,8 +2,6 @@
 #include <Arduino.h>
 #include <Arduino_due_FreeRTOS.h>
 
-#include <LiquidCrystal_I2C.h>
-
 #include "rtc.h"
 #include "logger.h"
 
@@ -11,14 +9,14 @@
 
 static int m_LoggerID;
 
-static void LED_Task(void *args) 
+static void LED_Task(void *args)
 {
   (void) args;
 
   static bool flip = false;
   pinMode(LED_BUILTIN, OUTPUT);
 
-  while (1) 
+  while (1)
   {
     digitalWrite(LED_BUILTIN, flip);
     flip = !flip;
@@ -26,21 +24,21 @@ static void LED_Task(void *args)
   }
 }
 
-static void Test_Task(void *args) 
+static void Test_Task(void *args)
 {
   (void) args;
 
   REALTIMECLOCK;
   RealTimeClock::Time_sT TimeCurrent;
 
-  while (1) 
+  while (1)
   {
     THREAD_SLEEP_MS(2000);
     TimeCurrent = REALTIMECLOCK.Get();
   }
 }
 
-void setup(void) 
+void setup(void)
 {
   m_LoggerID = LOGGER.Register("Main");
   LOG_LEVEL_DEBUG;
@@ -52,7 +50,7 @@ void setup(void)
   Serial.println("Error starting scheduler!");
 }
 
-void loop(void) 
+void loop(void)
 {
   static volatile uint32_t i = 0;
   i++;
