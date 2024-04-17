@@ -1,6 +1,6 @@
 /**
  * @file rtc.h
- * @brief Provides realtime clock interface
+ * @brief Chip real time clock API
  */
 
 #if !defined(INC_RTC_H__)

@@ -19,7 +19,7 @@ class Observer
 public:
 
   /**
-   * @brief Subscriber event handler
+   * @brief Observer event handler
    * @param SenderID  Sender ID number
    * @param MessageID Message ID number
    * @param Context   Message payload

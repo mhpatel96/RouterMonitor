@@ -5,22 +5,20 @@
 #include "rtc.h"
 #include "logger.h"
 
-#define THREAD_SLEEP_MS(ms)   vTaskDelay(pdMS_TO_TICKS(ms))
-
 static int m_LoggerID;
 
 static void LED_Task(void *args)
 {
   (void) args;
 
-  static bool flip = false;
+  static bool Flip = false;
   pinMode(LED_BUILTIN, OUTPUT);
 
   while (1)
   {
-    digitalWrite(LED_BUILTIN, flip);
-    flip = !flip;
-    THREAD_SLEEP_MS(500);
+    digitalWrite(LED_BUILTIN, Flip);
+    Flip = !Flip;
+    vTaskDelay(pdMS_TO_TICKS(500));
   }
 }
 
@@ -33,7 +31,7 @@ static void Test_Task(void *args)
 
   while (1)
   {
-    THREAD_SLEEP_MS(2000);
+    vTaskDelay(pdMS_TO_TICKS(2000));
     TimeCurrent = REALTIMECLOCK.Get();
   }
 }
