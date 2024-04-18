@@ -1,7 +1,7 @@
-Uses an Arduino DUE.
+Uses an Arduino Uno R4.
 
 Requires FreeRTOS. Not included with project.
 
-Monitors an LED on the front of a wireless router using an LDR ladder and a bunch of insulating tape. Logs timestamped entries to onboard EEPROM on an outage event.
+Peridoically pins the network and logs any outage events.
 
 Yes, I am this frustrated with my ISP.
