@@ -75,9 +75,6 @@ public:
 
 private:
 
-  /*! Logger key */
-  const int m_LoggerID;
-
   /*! Max number of observers/message */
   static constexpr int m_MaxObservers = 8;
 
@@ -90,6 +87,9 @@ private:
     void *Context;
   } 
   m_ObserverList[m_MaxObservers];
+
+  /*! Logger key */
+  const int m_LoggerID;
 
   /**
    * @brief Constructor

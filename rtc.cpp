@@ -24,7 +24,8 @@ const int RealTimeClock::s_MonthNumDays[12] = {
 #undef X
 };
 
-RealTimeClock::RealTimeClock(void) : m_LoggerID(LOGGER.Register("RTC"))
+RealTimeClock::RealTimeClock(void) : 
+  m_LoggerID(LOGGER.Register("RTC"))
 {
   LOG_LEVEL_INFO;
 
@@ -215,4 +216,11 @@ RealTimeClock::Time_sT RealTimeClock::Get(void)
   LOG_DEBUG(GetFormatted(Time));
 
   return Time;
+}
+
+void RealTimeClock::EventHandler(int SenderID, int MessageID, void *Context)
+{
+  (void) SenderID;
+  (void) MessageID;
+  (void) Context;
 }

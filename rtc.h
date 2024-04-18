@@ -6,6 +6,8 @@
 #if !defined(INC_RTC_H__)
 #define INC_RTC_H__
 
+#include "Observer.h"
+
 #define REALTIMECLOCK            RealTimeClock::Instance()
 
 /*! Maps day texts to enum values */
@@ -39,7 +41,8 @@
  * @note  Singleton class
  *        There is only a single RTC peripheral available on this chip
  */
-class RealTimeClock {
+class RealTimeClock : private Observer
+{
 public:
 
   /**
@@ -108,9 +111,6 @@ public:
 
 private:
 
-  /*! Logger key */
-  const int m_LoggerID;
-
   /*! Day text strings, indexed to corresponding enum */
   static const char *s_DayText[7];
   /*! Month text strings, indexed to corresponding enum */
@@ -121,8 +121,19 @@ private:
   /*! Formatted time string */
   char m_FormattedTime[64];
 
+  /*! Logger key */
+  const int m_LoggerID;
+  
   /**
-   * @brief No args constructor, uses compile time/date for initial value
+   * @brief Observer event handler
+   * @param SenderID  Sender ID number
+   * @param MessageID Message ID number
+   * @param Context   Message payload
+   */
+  void EventHandler(int SenderID, int MessageID, void *Context) override;
+
+  /**
+   * @brief No args constructor
    */
   RealTimeClock(void);
 

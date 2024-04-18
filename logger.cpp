@@ -2,7 +2,6 @@
 #include "logger.h"
 
 #include <Arduino.h>
-
 #include <Arduino_due_FreeRTOS.h>
 
 /* Prevent C++ name mangling */
@@ -29,7 +28,9 @@ const char *Logger::s_LogLevelText[4] = {
 #undef X
 };
 
-Logger::Logger(void) : m_LogModuleCount(0), m_LogQueuePos(0)
+Logger::Logger(void) : 
+  m_LogModuleCount(0), 
+  m_LogQueuePos(0)
 {
   Serial.begin(115200);
 

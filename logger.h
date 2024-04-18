@@ -6,6 +6,8 @@
 #if !defined(INC_LOGGER_H__)
 #define INC_LOGGER_H__
 
+#include "Observer.h"
+
 #define LOGGER                Logger::Instance()
 
 #define LOG_LEVEL_NONE        LOGGER.Level(m_LoggerID, Logger::LogLevel_eT::LogLevel_None)
@@ -86,7 +88,7 @@ public:
 
 private:
 
-  static constexpr int s_LogQueueSize = 8;
+  static constexpr int s_LogQueueSize = 16;
   static constexpr int s_LogQueueMaxMessageLength = 64;
 
   /*! Logger modules */

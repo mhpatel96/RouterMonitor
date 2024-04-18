@@ -23,7 +23,8 @@ void Publisher_Task(void *args)
 }
 #endif  /* __cplusplus */
 
-Publisher::Publisher(void) : m_LoggerID(LOGGER.Register("Pub"))
+Publisher::Publisher(void) : 
+  m_LoggerID(LOGGER.Register("Publisher"))
 {
   LOG_LEVEL_DEBUG;
   
